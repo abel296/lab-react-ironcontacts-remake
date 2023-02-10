@@ -29,11 +29,18 @@ export function App() {
     setContactsState(sortedContactsList)
   }
 
+  function sortContactsByPopularity() {
+    const contactsListCopy = [...contactsState]
+    const sortedContactsList = contactsListCopy.sort((a, b) => a.popularity - b.popularity).reverse()
+    setContactsState(sortedContactsList)
+  }
+
   return <>
     <section>
       <h1>IronContacts</h1>
       <button onClick={ () => addNewRandomContact(contacts) }>Add New Random Contact</button>
       <button onClick={ () => sortContactsByName() }>Sort by Name</button>
+      <button onClick={ () => sortContactsByPopularity() }>Sort by Popularity</button>
       { contactsState ? <ContactList contacts={ contactsState }></ContactList> : <i>Cargando</i> }
     </section>
   </>
