@@ -6,7 +6,7 @@ import './App.css'
 
 export function App() {
   const [contactsState, setContactsState] = useState(contacts.filter((elm, idx) => idx <= 4))
-  
+
   function addNewRandomContact(contacts) {
     const restContacts = contacts.filter(elm => !contactsState.includes(elm))
     const randomIndex = Math.floor(Math.random() * ((restContacts.length - 1) - 0) + 0)
@@ -32,13 +32,20 @@ export function App() {
     setContactsState([...contactsState].sort((a, b) => a.popularity - b.popularity).reverse())
   }
 
+  function removeContact(id) {
+    console.log(id)
+    setContactsState([...contactsState.filter(elm => elm.id !== id)])
+  }
+
   return <>
     <section>
       <h1>IronContacts</h1>
-      <button onClick={ () => addNewRandomContact(contacts) }>Add New Random Contact</button>
-      <button onClick={ () => sortContactsByName() }>Sort by Name</button>
-      <button onClick={ () => sortContactsByPopularity() }>Sort by Popularity</button>
-      { contactsState ? <ContactList contacts={ contactsState }></ContactList> : <i>Cargando</i> }
+      <section className="buttons">
+        <button onClick={ () => addNewRandomContact(contacts) }>Add New Random Contact</button>
+        <button onClick={ () => sortContactsByName() }>Sort by Name</button>
+        <button onClick={ () => sortContactsByPopularity() }>Sort by Popularity</button>
+      </section>
+      { contactsState ? <ContactList contacts={ contactsState } removeContact={ (id) => removeContact(id) }></ContactList> : <i>Cargando</i> }
     </section>
   </>
 }

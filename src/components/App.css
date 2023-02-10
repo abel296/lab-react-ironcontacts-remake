@@ -17,3 +17,8 @@ h2 {
 button {
     padding: 5px;
 }
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}

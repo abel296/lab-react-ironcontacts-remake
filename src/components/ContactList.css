@@ -1,5 +1,5 @@
 .picture-header {
-    margin-left: 20px;
+    margin-left: 200px;
     margin-right: 80px;
 }
 
@@ -8,6 +8,10 @@
 }
 
 .popularity-header {
+    margin-left: 50px;
+}
+
+.popularity-action {
     margin-left: 50px;
 }
 

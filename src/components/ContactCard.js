@@ -1,13 +1,14 @@
 import './ContactCard.css'
 
-export function ContactCard({ pictureUrl, name, popularity }) {
+export function ContactCard({ id, pictureUrl, name, popularity, removeContact }) {
     return <>
         <td className='card'>
-            <figure>
+            <figure className='row-elm'>
                 <img src={ pictureUrl } alt={ name }></img>
             </figure>
-            <h3>{ name }</h3>
-            <h3>{ popularity }</h3>
+            <h3 className='row-elm'>{ name }</h3>
+            <h3 className='row-elm'>{ popularity }</h3>
+            <button className='row-elm' onClick={ () => removeContact(id)}>Delete</button>
         </td>
     </>
 }
