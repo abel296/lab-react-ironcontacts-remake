@@ -13,10 +13,27 @@ export function App() {
     setContactsState([...contactsState, restContacts[randomIndex]])
   }
 
+  function sortContactsByName() {
+    const contactsListCopy = [...contactsState]
+    const sortedContactsList = contactsListCopy.sort((a, b) => {
+      const nameA = a.name.toUpperCase()
+      const nameB = b.name.toUpperCase()
+      if (nameA < nameB) {
+        return -1
+      }
+      if (nameA > nameB) {
+        return 1
+      }
+      return 0
+    })
+    setContactsState(sortedContactsList)
+  }
+
   return <>
     <section>
       <h1>IronContacts</h1>
       <button onClick={ () => addNewRandomContact(contacts) }>Add New Random Contact</button>
+      <button onClick={ () => sortContactsByName() }>Sort by Name</button>
       { contactsState ? <ContactList contacts={ contactsState }></ContactList> : <i>Cargando</i> }
     </section>
   </>
