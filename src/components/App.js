@@ -14,8 +14,7 @@ export function App() {
   }
 
   function sortContactsByName() {
-    const contactsListCopy = [...contactsState]
-    const sortedContactsList = contactsListCopy.sort((a, b) => {
+    const sortedContactsList = [...contactsState].sort((a, b) => {
       const nameA = a.name.toUpperCase()
       const nameB = b.name.toUpperCase()
       if (nameA < nameB) {
@@ -30,9 +29,7 @@ export function App() {
   }
 
   function sortContactsByPopularity() {
-    const contactsListCopy = [...contactsState]
-    const sortedContactsList = contactsListCopy.sort((a, b) => a.popularity - b.popularity).reverse()
-    setContactsState(sortedContactsList)
+    setContactsState([...contactsState].sort((a, b) => a.popularity - b.popularity).reverse())
   }
 
   return <>
