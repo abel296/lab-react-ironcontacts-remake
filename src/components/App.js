@@ -33,7 +33,6 @@ export function App() {
   }
 
   function removeContact(id) {
-    console.log(id)
     setContactsState([...contactsState.filter(elm => elm.id !== id)])
   }
 
